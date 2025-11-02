@@ -73,7 +73,8 @@ struct AiExplanationView: View {
                                 .padding(10)
                                 .background(
                                     RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.orange)
-                                )
+                                ).glassEffectTransition(.materialize)
+                                
                         }
                         Divider()
                     }

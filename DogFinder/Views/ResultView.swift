@@ -14,11 +14,21 @@ struct ResultView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Your Best Match:")
-                    .font(.title)
-                    .bold()
-                    .foregroundStyle(.orange)
-                    .padding(.horizontal,5)
+                
+                HStack{
+                    
+                    Text("Your Best Match:")
+                        .font(.title)
+                        .bold()
+                        .foregroundStyle(.orange)
+                        .padding(.horizontal, 5)
+                    
+                    if (viewModel.aiAssistant?.session.isResponding == true) {
+                        ProgressView()
+                    }
+                    
+                }
+              
 
                 Text(viewModel.bestMatch!.breedName)
                     .font(.largeTitle)
@@ -27,36 +37,36 @@ struct ResultView: View {
                     .padding(.horizontal, 5)
 
                 ScrollView {
-//                    NoAiExplanationView(breed: viewModel.bestMatch!, input: viewModel.userInput!)
+                    //                    NoAiExplanationView(breed: viewModel.bestMatch!, input: viewModel.userInput!)
 
                     if aiIsEnabled {
                         AiExplanationView()
+                    } else {
+                        NoAiExplanationView(
+                            breed: viewModel.bestMatch!,
+                            input: viewModel.userInput!
+                        )
                     }
-                    
-                    else {
-                        NoAiExplanationView(breed: viewModel.bestMatch!, input: viewModel.userInput!)
+
+                    if viewModel.aiAssistant?.session.isResponding == false
+                        || aiIsEnabled == false
+                    {
+                        Button {
+                            heavyImpact.impactOccurred()
+                            viewModel.currentView = .questionView
+
+                        } label: {
+                            Text("Start Again")
+                        }
+                        .controlSize(.large)
+                        .buttonStyle(.borderedProminent)
+                        .tint(defaultUIColor)
+                        .foregroundStyle(.white)
+                        .padding(12)
+                        .font(.headline)
                     }
                 }
-                .onAppear {
-
-                }
-            }
-            if viewModel.aiAssistant?.session.isResponding == false || aiIsEnabled == false {
-                Button {
-                    heavyImpact.impactOccurred()
-                    viewModel.currentView = .questionView
-
-                } label: {
-                    Text("Start Again")
-                }
-                .controlSize(.large)
-                .buttonStyle(.borderedProminent)
-                .tint(defaultUIColor)
-                .foregroundStyle(.white)
-                .padding(12)
-                .font(.headline)
             }
         }
     }
-
 }
