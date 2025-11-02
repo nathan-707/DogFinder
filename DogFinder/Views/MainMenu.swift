@@ -12,56 +12,39 @@ struct MainMenu: View {
     @EnvironmentObject private var viewModel: ViewModel
 
     var body: some View {
+        
+        if viewModel.currentView == .mainMenu {
+            VStack {
+                Text("Welcome to DogFinder!")
+                    .font(.largeTitle)
+                    .padding(10)
+                    .foregroundStyle(.primary)
+                    .bold()
 
-        VStack {
-            Text("Welcome to DogFinder!")
-                .font(.largeTitle)
-                .padding(10)
-                .foregroundStyle(.primary)
-                .bold()
+                Text("Finding a dog made easy.")
+                    .font(.headline)
+                    .foregroundStyle(.secondary)
 
-            Text("Finding a dog made easy.")
+                Button {
+                    viewModel.currentView = .questionView
+                    heavyImpact.impactOccurred()
+                } label: {
+                    Text("Get Started")
+                }
+                .controlSize(.large)
+                .buttonStyle(.borderedProminent)
+                .tint(defaultUIColor)
+                .foregroundStyle(.white)
+                .padding(12)
                 .font(.headline)
-                .foregroundStyle(.secondary)
-
-            Button {
-                viewModel.currentView = .questionView
-                heavyImpact.impactOccurred()
-            } label: {
-                Text("Get Started")
             }
-            .controlSize(.large)
-            .buttonStyle(.borderedProminent)
-            .tint(defaultUIColor)
-            .foregroundStyle(.white)
-            .padding(12)
-            .font(.headline)
-            
-            
-            
-            Button {
-                viewModel.currentView = .breedCatalogView
-                heavyImpact.impactOccurred()
-            } label: {
-                Text("Breed Catalog")
-            }
-            .controlSize(.large)
-            .buttonStyle(.borderedProminent)
-            .tint(defaultUIColor)
-            .foregroundStyle(.white)
-            .padding(12)
-            .font(.headline)
-            
-            
+        } else if viewModel.currentView == .questionView {
+            QuestionView()
         }
-        .onAppear {
-            setup()
-            ALL_Breeds = try! BreedLoader.decodeFromBundle()
+        
+        else if viewModel.currentView == .resultView {
+            ResultView()
         }
-    }
-
-    func setup() {
-        heavyImpact.prepare()
     }
 }
 

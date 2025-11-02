@@ -39,7 +39,7 @@ struct Question: Identifiable {
         self.answer_SelectorOptions = answer_Options
         self.isAnswered = false
         // Default answer: first option if provided, otherwise "0"
-        self.answer = 1
+        self.answer = 3
         self.questionCategory = questionCategory
         self.id = UUID()
     }

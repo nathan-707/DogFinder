@@ -5,13 +5,15 @@
 //  Created by Nathan Eriksen on 10/14/25.
 //
 
+import FoundationModels
 import SwiftUI
+
+var aiIsEnabled = false
 
 struct QuestionView: View {
     @EnvironmentObject private var viewModel: ViewModel
 
     var body: some View {
-
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 ForEach($viewModel.editableQuestions) { $question in
@@ -23,47 +25,53 @@ struct QuestionView: View {
                         InputView(question: $question)
                     }
                 }
-
-                HStack {
-
-                    Button {
-                        heavyImpact.impactOccurred()
-                        viewModel.currentView = .mainMenu
-                    } label: {
-                        Text("Back")
-                    }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                    .tint(defaultUIColor)
-                    .foregroundStyle(.white)
-                    .padding(12)
-                    .font(.headline)
-
-                    Button {
-                        viewModel.bestMatch = findUserMatch(userInput: UsersAnswers())
-                        heavyImpact.impactOccurred()
-                        viewModel.currentView = .resultView
-
-                    } label: {
-                        Text("View Result")
-                    }
-                    .controlSize(.large)
-                    .buttonStyle(.borderedProminent)
-                    .tint(defaultUIColor)
-                    .foregroundStyle(.white)
-                    .padding(12)
-                    .font(.headline)
-
-                }
-
             }
             .padding()
-        }
 
+            Button {
+                heavyImpact.impactOccurred()
+                startAiAnswer()
+                viewModel.userInput = UsersAnswers()
+                viewModel.bestMatch = findUserMatch(
+                    userInput: viewModel.userInput!
+                )
+                viewModel.currentView = .resultView
+
+            } label: {
+                Text("View Result")
+            }
+            .controlSize(.large)
+            .buttonStyle(.borderedProminent)
+            .tint(defaultUIColor)
+            .foregroundStyle(.white)
+            .padding(12)
+            .font(.headline)
+        }.onAppear {
+            viewModel.finalRational = ""
+        }
+    }
+
+    func startAiAnswer() {
+        aiIsEnabled = setupAI()
+
+        if aiIsEnabled {
+            viewModel.aiAssistant = AIAssistant()
+            Task {
+                try await viewModel.aiAssistant!.explainMatchToUser(
+                    breed: viewModel.bestMatch!,
+                    userInput: viewModel.userInput!
+                )
+
+                viewModel.finalRational =
+                    viewModel.aiAssistant?.assistantResponse?
+                    .rationale ?? ""
+                print("AI DONE")
+            }
+
+        }
     }
 
     func UsersAnswers() -> UserInput {
-
         var input = UserInput(
             affectionateWithFamily: 0,
             goodWithYoungChildren: 0,
@@ -115,6 +123,32 @@ struct QuestionView: View {
         }
         return input
     }
+
+    func setupAI() -> Bool {
+        if #available(iOS 26, *) {
+            let model = SystemLanguageModel.default
+            switch model.availability {
+            case .available:
+                return true
+            // Show your intelligence UI.
+            case .unavailable(.deviceNotEligible):
+                return false
+            // Show an alternative UI.
+            case .unavailable(.appleIntelligenceNotEnabled):
+                return false
+            // Ask the person to turn on Apple Intelligence.
+            case .unavailable(.modelNotReady):
+                return false
+            // The model isn't ready because it's downloading or because of other system reasons.
+            case .unavailable(_):
+                return false
+            // The model is unavailable for an unknown reason.
+
+            }
+        }
+        return false
+    }
+
 }
 
 //#Preview {

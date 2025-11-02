@@ -8,15 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		822A633A2E9F3D6E0046B650 /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822A63392E9F3D6E0046B650 /* TODO.swift */; };
-		824603772EB3EA940045455F /* breeds.json in Resources */ = {isa = PBXBuildFile; fileRef = 824603762EB3EA940045455F /* breeds.json */; };
-		824603792EB3EAD00045455F /* BreedClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824603782EB3EAD00045455F /* BreedClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		822A63062E9F2B4F0046B650 /* DogFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		822A63392E9F3D6E0046B650 /* TODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
-		824603762EB3EA940045455F /* breeds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = breeds.json; sourceTree = "<group>"; };
-		824603782EB3EAD00045455F /* BreedClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -41,7 +37,6 @@
 		822A62FD2E9F2B4F0046B650 = {
 			isa = PBXGroup;
 			children = (
-				824603752EB3EA850045455F /* Data */,
 				822A63392E9F3D6E0046B650 /* TODO.swift */,
 				822A63082E9F2B4F0046B650 /* DogFinder */,
 				822A63072E9F2B4F0046B650 /* Products */,
@@ -54,15 +49,6 @@
 				822A63062E9F2B4F0046B650 /* DogFinder.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		824603752EB3EA850045455F /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				824603762EB3EA940045455F /* breeds.json */,
-				824603782EB3EAD00045455F /* BreedClass.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,7 +115,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				824603772EB3EA940045455F /* breeds.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +125,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				824603792EB3EAD00045455F /* BreedClass.swift in Sources */,
 				822A633A2E9F3D6E0046B650 /* TODO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

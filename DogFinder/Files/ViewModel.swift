@@ -10,11 +10,20 @@ import Foundation
 import SwiftUI
 
 class ViewModel: ObservableObject {
+    
+    var aiAssistant: AIAssistant? = AIAssistant()
+
+    
+    @Published var finalRational = ""
+    
+
     @Published var editableQuestions: [Question] = questions
 
     @Published var currentView: Views = .mainMenu
     
     @Published var bestMatch: Breed?
+    
+    @Published var userInput: UserInput?
     
     var allBreeds: [Breed] = []
 }
