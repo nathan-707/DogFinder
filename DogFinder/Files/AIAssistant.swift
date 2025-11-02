@@ -11,7 +11,7 @@ import Observation
 @available(iOS 26, *)
 
 let DogFinderAiAssistantInstructions = """
-    you are a dog finding assistant. you explain to user why the given breed matches well with their preferences that are given to you. The categories are from 1 to 5. 1 is the least, 5 is the most of whatever level.
+    you are a dog finding assistant. you are a assistant that explains how the given breed matches with the given preferences in 'UserInput'. The categories are from 1 to 5. 1 is the least, 5 is the most of whatever level. For each category. Break down how each category matches or does not. Talk directly to the user, dont call them 'User' 
     """
 
 @Observable
@@ -23,13 +23,12 @@ final class AIAssistant {
     }
 
     func clearRational() {
-        assistantResponse?.rationale = ""
+        assistantResponse?.affectionateWithFamily_Rationale = ""
     }
 
     private(set) var assistantResponse: AIResponse.PartiallyGenerated?
     var session: LanguageModelSession
     var error: Error?
-
 
     let AIOptions = GenerationOptions()
 
@@ -37,7 +36,6 @@ final class AIAssistant {
         self.session = LanguageModelSession(
             instructions: DogFinderAiAssistantInstructions
         )
-
     }
 
     func explainMatchToUser(breed: Breed, userInput: UserInput) async throws {
@@ -50,11 +48,10 @@ final class AIAssistant {
             model: myModel,
             instructions: DogFinderAiAssistantInstructions
         )
-        
-        
-        
-        let prompt = "explain why \(breed.breedName) is a good match for user. There preference for each category was: \(userInput), while the \(breed.breedName) ratings for each of the categories was \(String(describing: userInput)) "
-        
+
+        let prompt =
+            "explain why \(breed.breedName) is a good match for user. The Users preference for each category was: \(userInput), while the \(breed.breedName) ratings for each of the categories was \(breed) "
+
         print(prompt)
 
         let stream = session.streamResponse(
@@ -67,8 +64,5 @@ final class AIAssistant {
         for try await partialResponse in stream {
             assistantResponse = partialResponse.content
         }
-
-        // async response done here.
-
     }
 }

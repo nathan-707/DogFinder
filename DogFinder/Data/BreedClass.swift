@@ -2,7 +2,7 @@ import Foundation
 
 struct Breed: Hashable, Identifiable {
     let breedName: String
-    var id: String {breedName}
+    var id: String { breedName }
     let affectionateWithFamily: Int
     let goodWithYoungChildren: Int
     let goodWithOtherDogs: Int
@@ -40,7 +40,6 @@ struct Breed: Hashable, Identifiable {
         case mentalStimulationNeeds = "Mental Stimulation Needs"
     }
 }
-
 
 /// Helper responsible for decoding the breeds.json file into an array of `Breed` objects.
 enum BreedLoader {
@@ -113,16 +112,34 @@ enum BreedLoader {
             )
         }
         // Sort for stable order (optional): alphabetically by breedName
-        return breeds.sorted { $0.breedName.localizedCaseInsensitiveCompare($1.breedName) == .orderedAscending }
+        return breeds.sorted {
+            $0.breedName.localizedCaseInsensitiveCompare($1.breedName)
+                == .orderedAscending
+        }
     }
 
     /// Convenience to load and decode a file named `breeds.json` from the main bundle.
-    static func decodeFromBundle(fileName: String = "breeds", withExtension: String = "json", bundle: Bundle = .main) throws -> [Breed] {
-        guard let url = bundle.url(forResource: fileName, withExtension: withExtension) else {
-            throw NSError(domain: "BreedLoader", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not find \(fileName).\(withExtension) in bundle"])
+    static func decodeFromBundle(
+        fileName: String = "breeds",
+        withExtension: String = "json",
+        bundle: Bundle = .main
+    ) throws -> [Breed] {
+        guard
+            let url = bundle.url(
+                forResource: fileName,
+                withExtension: withExtension
+            )
+        else {
+            throw NSError(
+                domain: "BreedLoader",
+                code: 1,
+                userInfo: [
+                    NSLocalizedDescriptionKey:
+                        "Could not find \(fileName).\(withExtension) in bundle"
+                ]
+            )
         }
         let data = try Data(contentsOf: url)
         return try decode(data: data)
     }
 }
-

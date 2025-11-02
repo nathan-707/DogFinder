@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct UserInput {
     var affectionateWithFamily: Int
     var goodWithYoungChildren: Int
@@ -26,13 +25,9 @@ struct UserInput {
 }
 
 
-
-
 func findUserMatch(userInput: UserInput) -> Breed {
-    
     var bestMatch = ALL_Breeds.first!
     var highestScore = 0
-    
     
     for breed in ALL_Breeds {
         var currentScoreForBreed = 10000

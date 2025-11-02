@@ -9,23 +9,10 @@ import SwiftUI
 
 struct InputView: View {
     @Binding var question: Question
-    
 
     var body: some View {
-
-        //    case  blank, slider, wheelPicker, pallatePicker
-
         HStack {
-
-//            if question.answer_Type == .blank {
-//                TextField(question.answer_Units, text: $question.answer)
-//                    .tint(pickerTint)
-//            }
-//            
-//            else
-            
             if question.answer_Type == .slider {
-
                 Picker(question.answer_Units, selection: $question.answer) {
                     ForEach(
                         Int(
@@ -36,19 +23,17 @@ struct InputView: View {
                         Text("\($0)").tag(String($0))
                     }
                 }
-                
                 .tint(pickerTint)
-                
-                
+
             } else if question.answer_Type == .wheelPicker {
                 Picker(question.answer_Units, selection: $question.answer) {
                     ForEach(question.answer_SelectorOptions!, id: \.self) {
                         Text("\($0)").tag(String($0))
                     }
                 }.pickerStyle(.wheel)
-                
+
                     .tint(pickerTint)
-                
+
             } else if question.answer_Type == .pallatePicker {
 
                 Picker(question.answer_Units, selection: $question.answer) {
@@ -57,7 +42,7 @@ struct InputView: View {
                     }
                 }
                 .pickerStyle(.palette)
-                
+
                 .tint(pickerTint)
             }
 

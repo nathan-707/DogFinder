@@ -12,7 +12,7 @@ struct MainMenu: View {
     @EnvironmentObject private var viewModel: ViewModel
 
     var body: some View {
-        
+
         if viewModel.currentView == .mainMenu {
             VStack {
                 Text("Welcome to DogFinder!")
@@ -40,9 +40,7 @@ struct MainMenu: View {
             }
         } else if viewModel.currentView == .questionView {
             QuestionView()
-        }
-        
-        else if viewModel.currentView == .resultView {
+        } else if viewModel.currentView == .resultView {
             ResultView()
         }
     }

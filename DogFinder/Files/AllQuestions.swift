@@ -8,7 +8,6 @@
 import Foundation
 
 let questions: [Question] = [
-
     Question(
         question: "How much adaptability do you want out of your dog?",
         answer_Type: .slider,
@@ -135,21 +134,5 @@ let questions: [Question] = [
         questionCategory: .mentalStimulationNeeds
     ),
 
-    //    enum QuestionCategory {
-    //         affectionateWithFamily,
-    //            goodWithYoungChildren,
-    //            goodWithOtherDogs,
-    //            sheddingLevel,
-    //            coatGroomingFrequency,
-    //            droolingLevel,
-    //
-    //            opennessToStrangers,
-    //            playfulnessLevel,
-    //            watchdogProtectiveNature,
-    //            adaptabilityLevel,
-    //            trainabilityLevel,
-    //            energyLevel,
-    //            barkingLevel,
-    //            mentalStimulationNeeds
 
 ]

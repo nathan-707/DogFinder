@@ -13,10 +13,8 @@ class ViewModel: ObservableObject {
     
     var aiAssistant: AIAssistant? = AIAssistant()
 
-    
     @Published var finalRational = ""
     
-
     @Published var editableQuestions: [Question] = questions
 
     @Published var currentView: Views = .mainMenu

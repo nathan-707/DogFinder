@@ -9,14 +9,11 @@ import SwiftUI
 
 struct BreedCatalogView: View {
     @EnvironmentObject var viewModel: ViewModel
+    
     var body: some View {
         let attributeFont: Font = .caption
-
         ScrollView {
-
-        LazyVStack(alignment: .leading) {
-            
-                
+            LazyVStack(alignment: .leading) {
                 VStack(alignment: .leading) {
                     ForEach(ALL_Breeds) { breed in
                         VStack(alignment: .leading) {
@@ -69,19 +66,6 @@ struct BreedCatalogView: View {
                     }
                 }
             }
-
-//            Button {
-//                heavyImpact.impactOccurred()
-//                viewModel.currentView = .mainMenu
-//            } label: {
-//                Text("Back")
-//            }
-//            .controlSize(.large)
-//            .buttonStyle(.borderedProminent)
-//            .tint(defaultUIColor)
-//            .foregroundStyle(.white)
-//            .padding(12)
-//            .font(.headline)
         }
     }
 }

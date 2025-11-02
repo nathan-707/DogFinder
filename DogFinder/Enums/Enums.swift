@@ -14,23 +14,6 @@ enum Views {
     case mainMenu, questionView, resultView, breedCatalogView
 }
 
-//let affectionateWithFamily: Int
-//let goodWithYoungChildren: Int
-//let goodWithOtherDogs: Int
-//let sheddingLevel: Int
-//let coatGroomingFrequency: Int
-//let droolingLevel: Int
-//
-//
-//let opennessToStrangers: Int
-//let playfulnessLevel: Int
-//let watchdogProtectiveNature: Int
-//let adaptabilityLevel: Int
-//let trainabilityLevel: Int
-//let energyLevel: Int
-//let barkingLevel: Int
-//let mentalStimulationNeeds: Int
-
 enum QuestionCategory {
     case affectionateWithFamily,
         goodWithYoungChildren,

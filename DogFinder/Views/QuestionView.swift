@@ -64,7 +64,7 @@ struct QuestionView: View {
 
                 viewModel.finalRational =
                     viewModel.aiAssistant?.assistantResponse?
-                    .rationale ?? ""
+                    .affectionateWithFamily_Rationale ?? ""
                 print("AI DONE")
             }
 

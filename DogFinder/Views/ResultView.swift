@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ResultView: View {
     @EnvironmentObject private var viewModel: ViewModel
-    @State var aiIsEnabled = false
 
     var body: some View {
         VStack {
@@ -19,27 +18,30 @@ struct ResultView: View {
                     .font(.title)
                     .bold()
                     .foregroundStyle(.orange)
-                    .padding(5)
+                    .padding(.horizontal,5)
 
                 Text(viewModel.bestMatch!.breedName)
-                    .font(.title2)
+                    .font(.largeTitle)
                     .bold()
                     .foregroundStyle(.white)
                     .padding(.horizontal, 5)
 
                 ScrollView {
+//                    NoAiExplanationView(breed: viewModel.bestMatch!, input: viewModel.userInput!)
 
-                    Text(
-                        viewModel.aiAssistant?.assistantResponse?.rationale ?? ""
-                    )
-                    .foregroundStyle(.secondary).padding()
-
+                    if aiIsEnabled {
+                        AiExplanationView()
+                    }
+                    
+                    else {
+                        NoAiExplanationView(breed: viewModel.bestMatch!, input: viewModel.userInput!)
+                    }
                 }
                 .onAppear {
-               
+
                 }
             }
-            if viewModel.aiAssistant?.session.isResponding == false {
+            if viewModel.aiAssistant?.session.isResponding == false || aiIsEnabled == false {
                 Button {
                     heavyImpact.impactOccurred()
                     viewModel.currentView = .questionView
