@@ -9,58 +9,192 @@ import SwiftUI
 
 struct BreedCatalogView: View {
     @EnvironmentObject var viewModel: ViewModel
-    
+
     var body: some View {
-        let attributeFont: Font = .caption
+        let attributeFont: Font = .caption2
+        let desPadding: CGFloat = 40
         ScrollView {
             LazyVStack(alignment: .leading) {
                 VStack(alignment: .leading) {
                     ForEach(ALL_Breeds) { breed in
+
                         VStack(alignment: .leading) {
+
                             Text(String(breed.breedName)).font(.title)
-                                .foregroundStyle(.orange)
-                            Text("Adaptability \(breed.adaptabilityLevel)")
-                                .font(attributeFont)
-                            Text(
-                                "Affectionate with Family \(breed.affectionateWithFamily)"
-                            ).font(attributeFont)
+                                .foregroundStyle(.orange).bold().padding(.bottom,10)
 
-                            Text("Barking Level \(breed.barkingLevel)").font(
-                                attributeFont
-                            )
-                            Text(
-                                "Coat Grooming Frequency \(breed.coatGroomingFrequency)"
-                            ).font(attributeFont)
-                            Text("Drooling level \(breed.droolingLevel)").font(
-                                attributeFont
-                            )
+                            HStack {
+                                Text("Adaptability: ")
+                                    .font(attributeFont)
 
-                            Text("Energy Level \(breed.energyLevel)").font(
-                                attributeFont
-                            )
-                            Text(
-                                "Good With Other Dogs \(breed.goodWithOtherDogs)"
-                            ).font(attributeFont)
-                            Text(
-                                "Good With Young Children \(breed.goodWithYoungChildren)"
-                            ).font(attributeFont)
-                            Text(
-                                "Mental Stimulation Needs \(breed.mentalStimulationNeeds)"
-                            ).font(attributeFont)
-                            Text(
-                                "Openness To Strangers \(breed.opennessToStrangers)"
-                            ).font(attributeFont)
-                            Text("Playfulness Level \(breed.playfulnessLevel)")
-                                .font(attributeFont)
-                            Text("Shedding Level \(breed.sheddingLevel)").font(
-                                attributeFont
-                            )
-                            Text(
-                                "Trainability Level \(breed.trainabilityLevel)"
-                            ).font(attributeFont)
-                            Text(
-                                "Watchdog Protective Nature \(breed.watchdogProtectiveNature)"
-                            ).font(attributeFont)
+                                Spacer()
+
+                                Text(String(breed.adaptabilityLevel)).font(
+                                    attributeFont
+                                ).bold().foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+
+                            }
+
+                            Divider()
+
+                            HStack {
+                                Text("Affectionate with Family: ")
+                                    .font(attributeFont)
+                                Spacer()
+
+                                Text(String(breed.affectionateWithFamily))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Barking Level: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.barkingLevel))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Coat Grooming Frequency: ")
+                                    .font(attributeFont)
+
+                                Spacer()
+                                Text(String(breed.coatGroomingFrequency))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Drooling level: ")
+                                    .font(attributeFont)
+
+                                Spacer()
+                                Text(String(breed.droolingLevel))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Energy Level: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.energyLevel))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Good With Other Dogs: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.goodWithOtherDogs))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Good With Young Children: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.goodWithYoungChildren))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Mental Stimulation Needs: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.mentalStimulationNeeds))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Openness To Strangers: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.opennessToStrangers))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Playfulness Level: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.playfulnessLevel))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Shedding Level: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.sheddingLevel))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Trainability Level: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.trainabilityLevel))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
+                            Divider()
+
+                            HStack {
+                                Text("Watchdog Protective Nature: ")
+                                    .font(attributeFont)
+                                Spacer()
+                                Text(String(breed.watchdogProtectiveNature))
+                                    .font(attributeFont)
+                                    .bold()
+                                    .foregroundStyle(.orange)
+                                    .padding(.trailing, desPadding)
+                            }
 
                         }.padding()
                     }

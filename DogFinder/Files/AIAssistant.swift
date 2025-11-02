@@ -50,7 +50,7 @@ final class AIAssistant {
         )
 
         let prompt =
-            "explain why \(breed.breedName) is a good match for user. The Users preference for each category was: \(userInput), while the \(breed.breedName) ratings for each of the categories was \(breed) "
+            "explain why \(breed.breedName) is a good match for user. The Users preference for each category was: \(userInput), while the \(breed.breedName) ratings for each of the categories was \(breed). State what the users rating for the category, and the rating for the breed in the answer."
 
         print(prompt)
 

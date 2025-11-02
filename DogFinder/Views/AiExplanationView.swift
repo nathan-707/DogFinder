@@ -58,17 +58,27 @@ struct AiExplanationView: View {
                 EmptyView()
             } else {
                 VStack(alignment: .leading, spacing: 12) {
+                    
                     ForEach(generatedPairs, id: \.id) { pair in
                         VStack(alignment: .leading, spacing: 4) {
+                            
                             Text(pair.title)
-                                .font(.headline)
+                                .font(.title2)
                                 .foregroundStyle(.orange)
+                                .bold()
+                            
                             Text(pair.detail)
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
+                                .font(.headline)
+                                .foregroundStyle(.white)
+                                .padding(10)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color.orange)
+                                )
                         }
                         Divider()
                     }
+                    
+                    
                 }
             }
         }
