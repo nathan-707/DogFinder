@@ -23,7 +23,10 @@ struct QuestionView: View {
                             .bold()
                             .foregroundStyle(defaultUIColor)
                         InputView(question: $question)
+                            .padding(.bottom,15)
                     }
+                    
+                    Divider()
                 }
             }
             .padding()

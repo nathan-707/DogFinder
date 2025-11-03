@@ -27,7 +27,7 @@ struct InputView: View {
 
             } else if question.answer_Type == .wheelPicker {
                 Picker(question.answer_Units, selection: $question.answer) {
-                    ForEach(question.answer_SelectorOptions!, id: \.self) {
+                    ForEach(question.answer_SelectorOptions, id: \.self) {
                         Text("\($0)").tag(String($0))
                     }
                 }.pickerStyle(.wheel)
@@ -37,11 +37,12 @@ struct InputView: View {
             } else if question.answer_Type == .pallatePicker {
 
                 Picker(question.answer_Units, selection: $question.answer) {
-                    ForEach(question.answer_SelectorOptions!, id: \.self) {
-                        Text("\($0)").tag(String($0))
+                    ForEach(Array(question.answer_SelectorOptions.enumerated()), id: \.offset) { index, option in
+                        Text(option).tag(index + 1) // tag starts from 1
                     }
                 }
                 .pickerStyle(.palette)
+
 
                 .tint(pickerTint)
             }

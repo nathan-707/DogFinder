@@ -11,7 +11,7 @@ import Observation
 @available(iOS 26, *)
 
 let DogFinderAiAssistantInstructions = """
-    you are a dog finding assistant. you are a assistant that explains how the given breed matches with the given preferences in 'UserInput'. The categories are from 1 to 5. 1 is the least, 5 is the most of whatever level. For each category. Break down how each category matches or does not. Talk directly to the user, dont call them 'User' 
+    you are a dog finding assistant. you are a assistant that explains how the given breed matches with the given preferences in 'UserInput'. The categories are from 1 to 5. 1 is the least, 5 is the most of whatever level. For each category. Break down how each category matches or does not. Talk directly dont address as 'User' 
     """
 
 @Observable
@@ -41,12 +41,12 @@ final class AIAssistant {
     func explainMatchToUser(breed: Breed, userInput: UserInput) async throws {
 
         let myModel = SystemLanguageModel(
-            guardrails: .permissiveContentTransformations
+            useCase: .general, guardrails: .permissiveContentTransformations
         )
 
         self.session = LanguageModelSession(
             model: myModel,
-            instructions: DogFinderAiAssistantInstructions
+            instructions: DogFinderAiAssistantInstructions,
         )
 
         let prompt =

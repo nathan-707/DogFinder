@@ -58,7 +58,6 @@ struct AiExplanationView: View {
                 EmptyView()
             } else {
                 VStack(alignment: .leading, spacing: 12) {
-                    
                     ForEach(generatedPairs, id: \.id) { pair in
                         VStack(alignment: .leading, spacing: 4) {
                             
@@ -78,13 +77,10 @@ struct AiExplanationView: View {
                         }
                         Divider()
                     }
-                    
-                    
                 }
             }
         }
     }
-
 }
 
 #Preview {

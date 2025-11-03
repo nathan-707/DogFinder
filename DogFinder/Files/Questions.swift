@@ -14,7 +14,7 @@ struct Question: Identifiable {
     var answer_Units: String
     var answer_Upperbound: Int?
     var answer_Lowerbound: Int = 1
-    var answer_SelectorOptions: [String]?
+    var answer_SelectorOptions: [String]
     var isAnswered: Bool = false
     var answer: Int
     var questionCategory: QuestionCategory
@@ -36,7 +36,7 @@ struct Question: Identifiable {
         self.answer_Units = answer_Units
         self.answer_Upperbound = answer_Upperbound
         self.answer_Lowerbound = answer_Lowerbound ?? 1
-        self.answer_SelectorOptions = answer_Options
+        self.answer_SelectorOptions = answer_Options ?? ["None", "Barely", "Some", "Fairly", "Alot"]
         self.isAnswered = false
         // Default answer: first option if provided, otherwise "0"
         self.answer = 3

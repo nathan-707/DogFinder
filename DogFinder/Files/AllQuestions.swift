@@ -10,7 +10,7 @@ import Foundation
 let questions: [Question] = [
     Question(
         question: "How much adaptability do you want out of your dog?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -19,7 +19,7 @@ let questions: [Question] = [
 
     Question(
         question: "How affectionate do you want your dog to be with family?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -28,7 +28,7 @@ let questions: [Question] = [
 
     Question(
         question: "How well should your dog get along with young children?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -37,7 +37,7 @@ let questions: [Question] = [
 
     Question(
         question: "How friendly should your dog be with other dogs?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -45,8 +45,8 @@ let questions: [Question] = [
     ),
 
     Question(
-        question: "How low-shedding do you want your dog to be?",
-        answer_Type: .slider,
+        question: "How much shedding are you ok with?",
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -55,7 +55,7 @@ let questions: [Question] = [
 
     Question(
         question: "How much time are you willing to spend on coat grooming?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -64,7 +64,7 @@ let questions: [Question] = [
 
     Question(
         question: "How tolerant are you of drooling?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -73,7 +73,7 @@ let questions: [Question] = [
 
     Question(
         question: "How open to strangers should your dog be?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -82,7 +82,7 @@ let questions: [Question] = [
 
     Question(
         question: "How playful do you want your dog to be?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -91,7 +91,7 @@ let questions: [Question] = [
 
     Question(
         question: "How strong should your dog's watchdog/protective nature be?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -100,7 +100,7 @@ let questions: [Question] = [
 
     Question(
         question: "How trainable do you want your dog to be?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -109,7 +109,7 @@ let questions: [Question] = [
 
     Question(
         question: "How much daily energy should your dog have?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -118,7 +118,7 @@ let questions: [Question] = [
 
     Question(
         question: "How much barking are you comfortable with?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
@@ -127,7 +127,7 @@ let questions: [Question] = [
 
     Question(
         question: "How much mental stimulation should your dog require?",
-        answer_Type: .slider,
+        answer_Type: .pallatePicker,
         answer_Units: "",
         answer_Upperbound: 5,
         answer_Lowerbound: 1,
