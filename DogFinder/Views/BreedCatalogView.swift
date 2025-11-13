@@ -15,7 +15,7 @@ struct BreedCatalogView: View {
         let desPadding: CGFloat = 40
         ScrollView {
             LazyVStack(alignment: .leading) {
-                VStack(alignment: .leading) {
+                LazyVStack(alignment: .leading) {
                     ForEach(ALL_Breeds) { breed in
 
                         VStack(alignment: .leading) {
@@ -33,7 +33,6 @@ struct BreedCatalogView: View {
                                     attributeFont
                                 ).bold().foregroundStyle(.orange)
                                     .padding(.trailing, desPadding)
-
                             }
 
                             Divider()

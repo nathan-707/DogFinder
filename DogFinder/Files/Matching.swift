@@ -25,32 +25,52 @@ struct UserInput {
 }
 
 
-func findUserMatch(userInput: UserInput) -> Breed {
-    var bestMatch = ALL_Breeds.first!
-    var highestScore = 0
-    
-    for breed in ALL_Breeds {
-        var currentScoreForBreed = 10000
-        
-        // apply score
-        currentScoreForBreed -= abs(breed.affectionateWithFamily - userInput.affectionateWithFamily)
-        currentScoreForBreed -= abs(breed.goodWithYoungChildren - userInput.goodWithYoungChildren)
-        currentScoreForBreed -= abs(breed.goodWithOtherDogs - userInput.goodWithOtherDogs)
-        currentScoreForBreed -= abs(breed.sheddingLevel - userInput.sheddingLevel)
-        currentScoreForBreed -= abs(breed.coatGroomingFrequency - userInput.coatGroomingFrequency)
-        currentScoreForBreed -= abs(breed.droolingLevel - userInput.droolingLevel)
-        currentScoreForBreed -= abs(breed.opennessToStrangers - userInput.opennessToStrangers)
-        currentScoreForBreed -= abs(breed.playfulnessLevel - userInput.playfulnessLevel)
-        currentScoreForBreed -= abs(breed.watchdogProtectiveNature - userInput.watchdogProtectiveNature)
-        currentScoreForBreed -= abs(breed.adaptabilityLevel - userInput.adaptabilityLevel)
-        currentScoreForBreed -= abs(breed.trainabilityLevel - userInput.trainabilityLevel)
-        currentScoreForBreed -= abs(breed.energyLevel - userInput.energyLevel)
-        currentScoreForBreed -= abs(breed.mentalStimulationNeeds - userInput.mentalStimulationNeeds)
-        
-        if currentScoreForBreed > highestScore {
-            highestScore = currentScoreForBreed
-            bestMatch = breed
-        }
+func findUserMatch(userInput: UserInput) -> [Breed] {
+    let maxNumberOfBestMatches = 5
+
+    // Build an array of (breed, score) for all breeds
+    let scoredBreeds: [(breed: Breed, score: Int)] = ALL_Breeds.map { breed in
+        var score = 10000
+        score -= abs(breed.affectionateWithFamily - userInput.affectionateWithFamily)
+        score -= abs(breed.goodWithYoungChildren - userInput.goodWithYoungChildren)
+        score -= abs(breed.goodWithOtherDogs - userInput.goodWithOtherDogs)
+        score -= abs(breed.sheddingLevel - userInput.sheddingLevel)
+        score -= abs(breed.coatGroomingFrequency - userInput.coatGroomingFrequency)
+        score -= abs(breed.droolingLevel - userInput.droolingLevel)
+        score -= abs(breed.opennessToStrangers - userInput.opennessToStrangers)
+        score -= abs(breed.playfulnessLevel - userInput.playfulnessLevel)
+        score -= abs(breed.watchdogProtectiveNature - userInput.watchdogProtectiveNature)
+        score -= abs(breed.adaptabilityLevel - userInput.adaptabilityLevel)
+        score -= abs(breed.trainabilityLevel - userInput.trainabilityLevel)
+        score -= abs(breed.energyLevel - userInput.energyLevel)
+        score -= abs(breed.mentalStimulationNeeds - userInput.mentalStimulationNeeds)
+        // Include barking level since it's present on UserInput
+        score -= abs(breed.barkingLevel - userInput.barkingLevel)
+        return (breed, score)
     }
-    return bestMatch
+
+    // Sort by score descending (highest score first); for stable ordering on ties, fall back to name if available
+    let sortedBreeds = scoredBreeds.sorted { lhs, rhs in
+        if lhs.score != rhs.score { return lhs.score > rhs.score }
+        // If Breed has a `name` property, this ensures deterministic order on ties; otherwise remove the next line.
+        return String(describing: lhs.breed).localizedCaseInsensitiveCompare(String(describing: rhs.breed)) == .orderedAscending
+    }
+    
+    for breed in sortedBreeds {
+        print(breed.breed.breedName)
+        print(breed.score)
+        print("-------")
+    }
+
+    // Take the top N breeds
+    let topBreeds = sortedBreeds.prefix(maxNumberOfBestMatches).map { $0.breed }
+    
+    for breed in topBreeds {
+        print("*******")
+        print(breed.breedName)
+        print("*******")
+    }
+    
+  
+    return Array(topBreeds)
 }

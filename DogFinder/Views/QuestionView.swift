@@ -33,9 +33,11 @@ struct QuestionView: View {
 
             Button {
                 heavyImpact.impactOccurred()
-                startAiAnswer()
+                if #available(iOS 26.0, *) {
+                    startAiAnswer()
+                }
                 viewModel.userInput = UsersAnswers()
-                viewModel.bestMatch = findUserMatch(
+                viewModel.bestMatches = findUserMatch(
                     userInput: viewModel.userInput!
                 )
                 viewModel.currentView = .resultView
@@ -53,20 +55,21 @@ struct QuestionView: View {
             viewModel.finalRational = ""
         }
     }
-
+    
+    @available(iOS 26.0, *)
     func startAiAnswer() {
         aiIsEnabled = setupAI()
 
         if aiIsEnabled {
-            viewModel.aiAssistant = AIAssistant()
+            aiAssistant = AIAssistant()
             Task {
-                try await viewModel.aiAssistant!.explainMatchToUser(
-                    breed: viewModel.bestMatch!,
+                try await aiAssistant!.explainMatchToUser(
+                    breed: viewModel.bestMatches.first!,
                     userInput: viewModel.userInput!
                 )
 
                 viewModel.finalRational =
-                    viewModel.aiAssistant?.assistantResponse?
+                    aiAssistant?.assistantResponse?
                     .affectionateWithFamily_Rationale ?? ""
                 print("AI DONE")
             }

@@ -2267,24 +2267,7 @@
         "Barking Level": 3,
         "Mental Stimulation Needs": 4
     },
-    "Black and Tan Coonhounds": {
-        "Affectionate With Family": 4,
-        "Good With Young Children": 5,
-        "Good With Other Dogs": 5,
-        "Shedding Level": 3,
-        "Coat Grooming Frequency": 2,
-        "Drooling Level": 3,
-        "Coat Type": "Smooth",
-        "Coat Length": "Short",
-        "Openness To Strangers": 3,
-        "Playfulness Level": 3,
-        "Watchdog/Protective Nature": 2,
-        "Adaptability Level": 4,
-        "Trainability Level": 3,
-        "Energy Level": 3,
-        "Barking Level": 4,
-        "Mental Stimulation Needs": 3
-    },
+
     "Spaniels (Welsh Springer)": {
         "Affectionate With Family": 5,
         "Good With Young Children": 5,

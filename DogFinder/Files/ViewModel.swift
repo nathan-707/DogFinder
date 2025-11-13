@@ -9,9 +9,13 @@ import Combine
 import Foundation
 import SwiftUI
 
+
+@available(iOS 26.0, *)
+var aiAssistant: AIAssistant? = AIAssistant()
+
+
 class ViewModel: ObservableObject {
-    
-    var aiAssistant: AIAssistant? = AIAssistant()
+
 
     @Published var finalRational = ""
     
@@ -19,7 +23,7 @@ class ViewModel: ObservableObject {
 
     @Published var currentView: Views = .mainMenu
     
-    @Published var bestMatch: Breed?
+    @Published var bestMatches: [Breed] = []
     
     @Published var userInput: UserInput?
     

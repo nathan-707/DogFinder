@@ -8,11 +8,13 @@
 import FoundationModels
 import SwiftUI
 
+
+@available(iOS 26.0, *)
 struct AiExplanationView: View {
     @EnvironmentObject var viewModel: ViewModel
     var body: some View {
         VStack {
-            CategoryExplainationCell(response: (viewModel.aiAssistant?.assistantResponse))
+            CategoryExplainationCell(response: (aiAssistant?.assistantResponse))
                 .foregroundStyle(.secondary)
                 .padding()
         }
@@ -83,6 +85,3 @@ struct AiExplanationView: View {
     }
 }
 
-#Preview {
-    AiExplanationView()
-}

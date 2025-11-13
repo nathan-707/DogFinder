@@ -47,7 +47,7 @@ struct NoAiExplanationView: View {
                     Text(categoryTitle)
                         .font(.headline)
                     Spacer()
-                    Text("Breed: \(breedCategory_Level)")
+                    Text("#1 Breed: \(breedCategory_Level)")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                     Text("You: \(inputCategory_Level)")
