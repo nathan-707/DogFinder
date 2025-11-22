@@ -133,6 +133,4 @@ let questions: [Question] = [
         answer_Lowerbound: 1,
         questionCategory: .mentalStimulationNeeds
     ),
-
-
 ]

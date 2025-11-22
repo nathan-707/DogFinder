@@ -33,6 +33,7 @@ struct BreedCatalogView: View {
                                     attributeFont
                                 ).bold().foregroundStyle(.orange)
                                     .padding(.trailing, desPadding)
+
                             }
 
                             Divider()
